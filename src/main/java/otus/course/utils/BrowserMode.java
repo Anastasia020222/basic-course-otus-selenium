@@ -4,7 +4,7 @@ public enum BrowserMode {
 
     KIOSK("--kiosk"),
     FULLSCREEN("--start-maximized"),
-    HEADLESS("--headless");
+    HEADLESS("--headless=old");
 
     private final String browserMode;
 
