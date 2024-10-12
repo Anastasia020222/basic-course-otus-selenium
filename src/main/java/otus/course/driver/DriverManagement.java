@@ -26,7 +26,9 @@ public class DriverManagement implements BeforeEachCallback, AfterEachCallback {
     @Override
     public void afterEach(ExtensionContext extensionContext) throws Exception {
         extensionContext.getTestInstance().ifPresent(instance -> {
-            threadLocal.get().getInstance(WebDriver.class).quit();
+            if (threadLocal.get().getInstance(WebDriver.class) != null) {
+                threadLocal.get().getInstance(WebDriver.class).quit();
+            }
         });
     }
 }
