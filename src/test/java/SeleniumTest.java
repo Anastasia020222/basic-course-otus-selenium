@@ -18,25 +18,27 @@ public class SeleniumTest {
     @LabelBrowserMode(browserMode = HEADLESS)
     @DisplayName("Проверка правильности введенного текста")
     public void checkInputText() {
-        mainPages.inputText();
-        mainPages.checkCorrectnessText();
+        mainPages
+                .inputText()
+                .checkCorrectnessText();
     }
 
     @Test
     @LabelBrowserMode(browserMode = KIOSK)
     @DisplayName("Проверка открытия модального окна")
     public void openModelWindow() {
-        mainPages.clickModeWindow();
-        mainPages.checkVisibleModeWindow();
+        mainPages
+                .clickModeWindow()
+                .checkVisibleModeWindow();
     }
 
     @Test
     @LabelBrowserMode(browserMode = FULLSCREEN)
     @DisplayName("Проверка отправки данных в форме")
     public void sendingForm() {
-        mainPages.inputName();
-        mainPages.inputEmail();
-        mainPages.clickBtnSubmit();
-        mainPages.checkMessageBox();
+        mainPages.inputName()
+                .inputEmail()
+                .clickBtnSubmit()
+                .checkMessageBox();
     }
 }

@@ -20,9 +20,11 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <guice.version>5.1.0</guice.version>
 
+        <email>test@mail.com</email>
+        <password>12345</password>
         <browser>chrome</browser>
         <versionBrowser>121.0</versionBrowser>
-        <base.url>https://otus.home.kartushin.su/training.html</base.url>
+        <base.url>https://otus.home.kartushin.su/</base.url>
     </properties>
 
     <dependencies>
@@ -83,6 +85,8 @@
                         <browser>${browser}</browser>
                         <versionBrowser>${versionBrowser}</versionBrowser>
                         <base.url>${base.url}</base.url>
+                        <email>${email}</email>
+                        <password>${password}</password>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

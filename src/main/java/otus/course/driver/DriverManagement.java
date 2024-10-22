@@ -11,7 +11,6 @@ import static otus.course.utils.Annotation.getAnnotation;
 public class DriverManagement implements BeforeEachCallback, AfterEachCallback {
 
     private static final ThreadLocal<Injector> threadLocal = new ThreadLocal<>();
-    private final String url = System.getProperty("base.url");
 
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
@@ -19,7 +18,6 @@ public class DriverManagement implements BeforeEachCallback, AfterEachCallback {
             var injector = Guice.createInjector(new GuiceModule(getAnnotation(extensionContext)));
             injector.injectMembers(instance);
             threadLocal.set(injector);
-            threadLocal.get().getInstance(WebDriver.class).get(url);
         });
     }
 

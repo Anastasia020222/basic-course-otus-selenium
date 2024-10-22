@@ -5,25 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static otus.course.utils.Constants.*;
+import static otus.course.utils.Path.MAIN;
 
-public class MainPages extends BasePage {
+public class MainPages extends AbsBasePages {
 
-    private final String expectedText = "Актуальный текст.";
-    private final String name = "Настя";
-    private final String email = "test@mail.ru";
-    private final String expectedTextForm = "Форма отправлена с именем: %s и email: %s";
-    private final WebDriverWait wait;
+    private final String email = System.getProperty("email");
 
     @Inject
     public MainPages(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        super.open(MAIN.getPath());
     }
 
     @FindBy(id = "textInput")
@@ -47,42 +42,50 @@ public class MainPages extends BasePage {
     @FindBy(id = "messageBox")
     private WebElement messageBox;
 
-    public void inputText() {
-        inputText.sendKeys(expectedText);
+    public MainPages inputText() {
+        inputText.sendKeys(NAME);
+        return this;
     }
 
-    public void checkCorrectnessText() {
+    public MainPages checkCorrectnessText() {
         String actualValue = inputText.getAttribute("value");
-        assertEquals(actualValue, expectedText, "Значение поля не соответствует ожидаемому.");
+        assertEquals(actualValue, NAME, "Значение поля не соответствует ожидаемому.");
+        return this;
     }
 
-    public void clickModeWindow() {
+    public MainPages clickModeWindow() {
         modalWindowBtn.click();
+        return this;
     }
 
-    public void checkVisibleModeWindow() {
+    public MainPages checkVisibleModeWindow() {
         boolean visible = wait.until(ExpectedConditions.attributeToBe(visibleModal, "style", "display: block;"));
         assertTrue(visible, "Модальное окно не открылось.");
+        return this;
     }
 
-    public void inputName() {
-        inputFormName.sendKeys(name);
+    public MainPages inputName() {
+        inputFormName.sendKeys(NAME);
         String actualValue = inputFormName.getAttribute("value");
-        assertEquals(actualValue, name, "Значение в поле 'Имя' не соответствует ожидаемому.");
+        assertEquals(actualValue, NAME, "Значение в поле 'Имя' не соответствует ожидаемому.");
+        return this;
     }
 
-    public void inputEmail() {
+    public MainPages inputEmail() {
         inputFormEmail.sendKeys(email);
         String actualValue = inputFormEmail.getAttribute("value");
         assertEquals(actualValue, email, "Значение в поле 'Email' не соответствует ожидаемому.");
+        return this;
     }
 
-    public void clickBtnSubmit() {
+    public MainPages clickBtnSubmit() {
         btnSubmit.click();
+        return this;
     }
 
-    public void checkMessageBox() {
+    public MainPages checkMessageBox() {
         String actualText = messageBox.getText();
-        assertEquals(actualText, String.format(expectedTextForm, name, email), "Сообщение не соответствует ожидаемому.");
+        assertEquals(actualText, String.format(EXPECTED_TEXT_MAIN, NAME, email), "Сообщение не соответствует ожидаемому.");
+        return this;
     }
 }
