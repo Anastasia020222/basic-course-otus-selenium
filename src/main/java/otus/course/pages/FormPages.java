@@ -99,7 +99,7 @@ public class FormPages extends AbsBasePages {
         }
 
         String actualLang = fieldLanguage_level.getAttribute("value");
-        assertEquals(actualLang, INTERMEDIATE.name().toLowerCase(), "Выбранный язык в поле не соответствует: " + language);
+        assertEquals(INTERMEDIATE.name().toLowerCase(), actualLang, "Выбранный язык в поле не соответствует: " + language);
 
         return this;
     }
@@ -108,7 +108,7 @@ public class FormPages extends AbsBasePages {
         submit.click();
 
         String actualValue = output.getText();
-        assertEquals(actualValue, String.format(EXPECTED_TEXT_FORM, NAME, email, convertDate(getTodayDate()), language),
+        assertEquals(String.format(EXPECTED_TEXT_FORM, NAME, email, convertDate(getTodayDate()), language), actualValue,
                 "Текст после отправки формы не соответствует ожидаемому");
 
         assertFalse(checkAlert(), "Алерт отобразился");
@@ -129,7 +129,7 @@ public class FormPages extends AbsBasePages {
         try {
             Alert alert = driver.switchTo().alert();
             String message = alert.getText();
-            assertEquals(message, MESSAGE_FORM, "Текст в alert не соответствует " + MESSAGE_FORM);
+            assertEquals(MESSAGE_FORM, message, "Текст в alert не соответствует " + MESSAGE_FORM);
             return true;
         } catch (Exception e) {
             return false;
