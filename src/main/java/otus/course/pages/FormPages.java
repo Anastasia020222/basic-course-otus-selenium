@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import javax.inject.Inject;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +19,6 @@ public class FormPages extends AbsBasePages {
     private final String email = System.getProperty("email");
     private final String password = System.getProperty("password");
 
-    @Inject
     public FormPages(WebDriver driver) {
         super(driver);
         super.open(FORM.getPath());

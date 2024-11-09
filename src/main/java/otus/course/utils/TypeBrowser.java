@@ -1,7 +1,6 @@
 package otus.course.utils;
 
 public enum TypeBrowser {
-
     CHROME,
     FIREFOX;
 

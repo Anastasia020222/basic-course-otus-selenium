@@ -1,6 +1,5 @@
 package otus.course.pages;
 
-import com.google.inject.Inject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,14 +7,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static otus.course.utils.Constants.*;
+import static otus.course.utils.Constants.EXPECTED_TEXT_MAIN;
+import static otus.course.utils.Constants.NAME;
 import static otus.course.utils.Path.MAIN;
 
 public class MainPages extends AbsBasePages {
 
     private final String email = System.getProperty("email");
 
-    @Inject
     public MainPages(WebDriver driver) {
         super(driver);
         super.open(MAIN.getPath());

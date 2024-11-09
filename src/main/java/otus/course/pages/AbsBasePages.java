@@ -14,8 +14,8 @@ public abstract class AbsBasePages {
 
     public AbsBasePages(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
+        PageFactory.initElements(this.driver, this);
     }
 
     protected void open(String path) {

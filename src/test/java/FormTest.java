@@ -1,22 +1,23 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.WebDriver;
+import otus.course.driver.Driver;
 import otus.course.driver.DriverManagement;
 import otus.course.pages.FormPages;
-
-import javax.inject.Inject;
 
 import static otus.course.utils.TypeLanguageLevel.INTERMEDIATE;
 
 @ExtendWith(DriverManagement.class)
 public class FormTest {
 
-    @Inject
-    FormPages formPages;
+    @Driver
+    private WebDriver driver;
 
     @Test
     @DisplayName("Проверка правильной отправки формы")
     public void checkForm() {
+        FormPages formPages = new FormPages(driver);
         formPages
                 .inputName()
                 .inputEmail()

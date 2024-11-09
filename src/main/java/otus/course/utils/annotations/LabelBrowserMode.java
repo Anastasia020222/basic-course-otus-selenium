@@ -1,4 +1,4 @@
-package otus.course.utils.annotation;
+package otus.course.utils.annotations;
 
 import otus.course.utils.BrowserMode;
 

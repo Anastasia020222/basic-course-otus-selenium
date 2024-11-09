@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Date {
+
     public static String getTodayDate() {
         return LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
