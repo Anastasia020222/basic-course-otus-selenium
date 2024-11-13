@@ -23,7 +23,9 @@
         <email>test@mail.com</email>
         <password>12345</password>
         <browser>chrome</browser>
-        <versionBrowser>132.0</versionBrowser>
+        <versionBrowser>124.0</versionBrowser>
+        <remote>false</remote>
+        <selenoid.url>http://193.104.57.173:80/wd/hub</selenoid.url>
         <options></options>
         <base.url>https://otus.home.kartushin.su/</base.url>
     </properties>
@@ -79,6 +81,8 @@
                         <options>${options}</options>
                         <email>${email}</email>
                         <password>${password}</password>
+                        <remote>${remote}</remote>
+                        <selenoid.url>${selenoid.url}</selenoid.url>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
