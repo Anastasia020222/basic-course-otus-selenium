@@ -1,7 +1,7 @@
-package otus.course.driver;
+package otus.course.driver.options;
 
 import org.openqa.selenium.remote.AbstractDriverOptions;
-import otus.course.utils.TypeBrowser;
+import otus.course.utils.browser.TypeBrowser;
 
 import java.util.List;
 

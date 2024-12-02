@@ -1,24 +1,35 @@
 package otus.course.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import otus.course.AbsDriverObject;
 
 import java.time.Duration;
 
-public abstract class AbsBasePages {
+public abstract class AbsBasePages<T> extends AbsDriverObject {
 
     private final String url = System.getProperty("base.url");
-    protected WebDriver driver;
-    protected WebDriverWait wait;
+    protected JavascriptExecutor js;
+    protected Actions actions;
 
     public AbsBasePages(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
-        PageFactory.initElements(this.driver, this);
+        super(driver);
+        this.actions = new Actions(driver);
+        this.js = (JavascriptExecutor) driver;
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-    protected void open(String path) {
+    public T open(String path) {
         driver.get(url + path);
+        return (T) this;
+    }
+
+    protected void customWait(By el) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(el));
+        } catch (TimeoutException e) {
+            throw new TimeoutException("Элемент " + el + " не отобразился на странице");
+        }
     }
 }

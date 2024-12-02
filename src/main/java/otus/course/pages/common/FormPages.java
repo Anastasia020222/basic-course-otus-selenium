@@ -1,8 +1,9 @@
-package otus.course.pages;
+package otus.course.pages.common;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import otus.course.pages.AbsBasePages;
 
 import java.util.List;
 
@@ -11,17 +12,21 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static otus.course.utils.Constants.*;
 import static otus.course.utils.Date.convertDate;
 import static otus.course.utils.Date.getTodayDate;
-import static otus.course.utils.Path.FORM;
 import static otus.course.utils.TypeLanguageLevel.INTERMEDIATE;
 
-public class FormPages extends AbsBasePages {
+public class FormPages extends AbsBasePages<FormPages> {
 
     private final String email = System.getProperty("email");
     private final String password = System.getProperty("password");
 
     public FormPages(WebDriver driver) {
         super(driver);
-        super.open(FORM.getPath());
+    }
+
+    @Override
+    public FormPages open(String url) {
+        driver.get(url);
+        return this;
     }
 
     @FindBy(id = "username")

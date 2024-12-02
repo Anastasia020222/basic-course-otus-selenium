@@ -1,11 +1,11 @@
-package otus.course.driver;
+package otus.course.driver.options;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.AbstractDriverOptions;
-import otus.course.utils.TypeBrowser;
+import otus.course.utils.browser.TypeBrowser;
 
 import java.util.List;
 

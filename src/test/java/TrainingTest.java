@@ -4,13 +4,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import otus.course.driver.Driver;
 import otus.course.driver.DriverManagement;
-import otus.course.pages.MainPages;
+import otus.course.pages.common.TrainingPages;
 import otus.course.utils.annotations.LabelBrowserMode;
 
-import static otus.course.utils.BrowserMode.*;
+import static otus.course.utils.Path.TRAINING;
+import static otus.course.utils.browser.BrowserMode.*;
 
 @ExtendWith(DriverManagement.class)
-public class SeleniumTest {
+public class TrainingTest {
 
     @Driver
     private WebDriver driver;
@@ -19,8 +20,8 @@ public class SeleniumTest {
     @LabelBrowserMode(browserMode = HEADLESS)
     @DisplayName("Проверка правильности введенного текста")
     public void checkInputText() {
-        MainPages mainPages = new MainPages(driver);
-        mainPages
+        new TrainingPages(driver)
+                .open(TRAINING.getPath())
                 .inputText()
                 .checkCorrectnessText();
     }
@@ -29,8 +30,8 @@ public class SeleniumTest {
     @LabelBrowserMode(browserMode = KIOSK)
     @DisplayName("Проверка открытия модального окна")
     public void openModelWindow() {
-        MainPages mainPages = new MainPages(driver);
-        mainPages
+        new TrainingPages(driver)
+                .open(TRAINING.getPath())
                 .clickModeWindow()
                 .checkVisibleModeWindow();
     }
@@ -39,8 +40,9 @@ public class SeleniumTest {
     @LabelBrowserMode(browserMode = FULLSCREEN)
     @DisplayName("Проверка отправки данных в форме")
     public void sendingForm() {
-        MainPages mainPages = new MainPages(driver);
-        mainPages.inputName()
+        new TrainingPages(driver)
+                .open(TRAINING.getPath())
+                .inputName()
                 .inputEmail()
                 .clickBtnSubmit()
                 .checkMessageBox();

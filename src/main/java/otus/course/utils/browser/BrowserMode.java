@@ -1,4 +1,4 @@
-package otus.course.utils;
+package otus.course.utils.browser;
 
 import java.util.List;
 

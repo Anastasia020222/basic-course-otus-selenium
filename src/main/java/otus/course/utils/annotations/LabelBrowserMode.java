@@ -1,6 +1,6 @@
 package otus.course.utils.annotations;
 
-import otus.course.utils.BrowserMode;
+import otus.course.utils.browser.BrowserMode;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

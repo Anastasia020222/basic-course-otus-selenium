@@ -18,16 +18,16 @@
         <junit.version>5.10.2</junit.version>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <guice.version>5.1.0</guice.version>
+        <lombok>1.18.30</lombok>
 
         <email>test@mail.com</email>
         <password>12345</password>
         <browser>chrome</browser>
-        <versionBrowser>124.0</versionBrowser>
+        <versionBrowser>130.0</versionBrowser>
         <remote>false</remote>
         <selenoid.url>http://193.104.57.173:80/wd/hub</selenoid.url>
-        <options></options>
-        <base.url>https://otus.home.kartushin.su/</base.url>
+        <options>--start-maximized</options>
+        <base.url>https://otus.ru/</base.url>
     </properties>
 
     <dependencies>
@@ -56,6 +56,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.17.0</version>
@@ -64,6 +70,12 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>2.17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

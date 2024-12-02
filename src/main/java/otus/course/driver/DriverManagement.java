@@ -6,13 +6,13 @@ import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
-import otus.course.utils.TypeBrowser;
+import otus.course.utils.browser.TypeBrowser;
 
 import java.lang.reflect.Field;
 import java.util.List;
 
-import static otus.course.utils.SettingsBrowser.getOptionsBrowser;
-import static otus.course.utils.TypeBrowser.getTypeBrowser;
+import static otus.course.utils.browser.SettingsBrowser.getOptionsBrowser;
+import static otus.course.utils.browser.TypeBrowser.getTypeBrowser;
 
 public class DriverManagement implements BeforeEachCallback, AfterEachCallback {
 

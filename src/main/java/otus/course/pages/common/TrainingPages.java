@@ -1,23 +1,28 @@
-package otus.course.pages;
+package otus.course.pages.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import otus.course.pages.AbsBasePages;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static otus.course.utils.Constants.EXPECTED_TEXT_MAIN;
 import static otus.course.utils.Constants.NAME;
-import static otus.course.utils.Path.MAIN;
 
-public class MainPages extends AbsBasePages {
+public class TrainingPages extends AbsBasePages<TrainingPages> {
 
     private final String email = System.getProperty("email");
 
-    public MainPages(WebDriver driver) {
+    public TrainingPages(WebDriver driver) {
         super(driver);
-        super.open(MAIN.getPath());
+    }
+
+    @Override
+    public TrainingPages open(String url) {
+        driver.get(url);
+        return this;
     }
 
     @FindBy(id = "textInput")
@@ -41,48 +46,48 @@ public class MainPages extends AbsBasePages {
     @FindBy(id = "messageBox")
     private WebElement messageBox;
 
-    public MainPages inputText() {
+    public TrainingPages inputText() {
         inputText.sendKeys(NAME);
         return this;
     }
 
-    public MainPages checkCorrectnessText() {
+    public TrainingPages checkCorrectnessText() {
         String actualValue = inputText.getAttribute("value");
         assertEquals(actualValue, NAME, "Значение поля не соответствует ожидаемому.");
         return this;
     }
 
-    public MainPages clickModeWindow() {
+    public TrainingPages clickModeWindow() {
         modalWindowBtn.click();
         return this;
     }
 
-    public MainPages checkVisibleModeWindow() {
+    public TrainingPages checkVisibleModeWindow() {
         boolean visible = wait.until(ExpectedConditions.attributeToBe(visibleModal, "style", "display: block;"));
         assertTrue(visible, "Модальное окно не открылось.");
         return this;
     }
 
-    public MainPages inputName() {
+    public TrainingPages inputName() {
         inputFormName.sendKeys(NAME);
         String actualValue = inputFormName.getAttribute("value");
         assertEquals(actualValue, NAME, "Значение в поле 'Имя' не соответствует ожидаемому.");
         return this;
     }
 
-    public MainPages inputEmail() {
+    public TrainingPages inputEmail() {
         inputFormEmail.sendKeys(email);
         String actualValue = inputFormEmail.getAttribute("value");
         assertEquals(actualValue, email, "Значение в поле 'Email' не соответствует ожидаемому.");
         return this;
     }
 
-    public MainPages clickBtnSubmit() {
+    public TrainingPages clickBtnSubmit() {
         btnSubmit.click();
         return this;
     }
 
-    public MainPages checkMessageBox() {
+    public TrainingPages checkMessageBox() {
         String actualText = messageBox.getText();
         assertEquals(actualText, String.format(EXPECTED_TEXT_MAIN, NAME, email), "Сообщение не соответствует ожидаемому.");
         return this;

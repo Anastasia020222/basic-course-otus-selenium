@@ -10,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import otus.course.utils.TypeBrowser;
+import otus.course.driver.options.BrowserOptions;
+import otus.course.utils.browser.TypeBrowser;
 
 import java.net.MalformedURLException;
 import java.net.URL;

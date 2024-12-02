@@ -1,4 +1,4 @@
-package otus.course.utils;
+package otus.course.utils.browser;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
