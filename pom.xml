@@ -28,6 +28,8 @@
         <selenoid.url>http://193.104.57.173:80/wd/hub</selenoid.url>
         <options>--start-maximized</options>
         <base.url>https://otus.ru/</base.url>
+        <url.training>https://otus.home.kartushin.su</url.training>
+        <url.form>https://otus.home.kartushin.su</url.form>
     </properties>
 
     <dependencies>
@@ -90,6 +92,8 @@
                         <browser>${browser}</browser>
                         <versionBrowser>${versionBrowser}</versionBrowser>
                         <base.url>${base.url}</base.url>
+                        <url.form>${url.form}</url.form>
+                        <url.training>${url.training}</url.training>
                         <options>${options}</options>
                         <email>${email}</email>
                         <password>${password}</password>

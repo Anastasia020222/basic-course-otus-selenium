@@ -18,14 +18,15 @@ public class FormPages extends AbsBasePages<FormPages> {
 
     private final String email = System.getProperty("email");
     private final String password = System.getProperty("password");
+    private final String url = System.getProperty("url.form");
 
     public FormPages(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public FormPages open(String url) {
-        driver.get(url);
+    public FormPages open(String path) {
+        driver.get(url + path);
         return this;
     }
 

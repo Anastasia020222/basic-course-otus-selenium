@@ -14,14 +14,15 @@ import static otus.course.utils.Constants.NAME;
 public class TrainingPages extends AbsBasePages<TrainingPages> {
 
     private final String email = System.getProperty("email");
+    private final String url = System.getProperty("url.training");
 
     public TrainingPages(WebDriver driver) {
         super(driver);
     }
 
     @Override
-    public TrainingPages open(String url) {
-        driver.get(url);
+    public TrainingPages open(String path) {
+        driver.get(url + path);
         return this;
     }
 

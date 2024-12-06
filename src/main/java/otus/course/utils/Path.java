@@ -2,10 +2,9 @@ package otus.course.utils;
 
 public enum Path {
 
-    TRAINING("https://otus.home.kartushin.su/training.html"),
-    OTUS("https://otus.ru"),
+    TRAINING("/training.html"),
     TESTING("/catalog/courses?categories=testing"),
-    FORM("https://otus.home.kartushin.su/form.html");
+    FORM("/form.html");
 
     private final String path;
 

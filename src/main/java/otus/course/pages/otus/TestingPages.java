@@ -18,12 +18,6 @@ public class TestingPages extends AbsBasePages<TestingPages> {
         super(driver);
     }
 
-    @Override
-    public TestingPages open(String url) {
-        driver.get(url);
-        return this;
-    }
-
     @FindBy(css = ".sc-zzdkm7-0")
     private List<WebElement> listCoursesTesting;
 
