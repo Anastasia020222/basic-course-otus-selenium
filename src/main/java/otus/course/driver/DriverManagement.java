@@ -23,14 +23,10 @@ public class DriverManagement implements BeforeEachCallback, AfterEachCallback {
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
         TypeBrowser browser = getTypeBrowser();
         List<String> brOpt = getOptionsBrowser(extensionContext);
-        if (!brOpt.isEmpty()) {
-            driver = WebDriverFactory.createWebDriver(browser, brOpt);
-        } else {
-            driver = WebDriverFactory.createWebDriver(browser);
-        }
+        driver = new WebDriverFactory().create(browser, brOpt);
         Object testInstance = extensionContext.getRequiredTestInstance();
         for (Field field : testInstance.getClass().getDeclaredFields()) {
-            if (field.isAnnotationPresent(Driver.class) && field.getType() == WebDriver.class) {
+            if (field.isAnnotationPresent(Driver.class) && field.getType().equals(WebDriver.class)) {
                 field.setAccessible(true);
                 field.set(testInstance, driver);
             }

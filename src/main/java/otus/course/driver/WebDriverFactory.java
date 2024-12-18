@@ -18,18 +18,15 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-public class WebDriverFactory {
+public class WebDriverFactory implements IDriver {
 
     private static final Logger logger = LogManager.getLogger(WebDriverFactory.class);
-    private final static boolean remote = "true".equals(System.getProperty("remote"));
-    private final static String remoteSelenoidUrl = System.getProperty("selenoid.url");
-    private final static String versionBrowser = System.getProperty("versionBrowser");
+    private final boolean remote = "true".equals(System.getProperty("remote"));
+    private final String remoteSelenoidUrl = System.getProperty("selenoid.url");
+    private final String versionBrowser = System.getProperty("versionBrowser");
 
-    public static WebDriver createWebDriver(TypeBrowser browser) {
-        return createWebDriver(browser, List.of());
-    }
-
-    public static WebDriver createWebDriver(TypeBrowser browser, List<String> options) {
+    @Override
+    public WebDriver create(TypeBrowser browser, List<String> options) {
         if (!remote) {
             switch (browser) {
                 case CHROME:
@@ -51,7 +48,7 @@ public class WebDriverFactory {
         }
     }
 
-    private static DesiredCapabilities getCapabilitiesSelenoid(TypeBrowser browser) {
+    private DesiredCapabilities getCapabilitiesSelenoid(TypeBrowser browser) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(String.valueOf(browser).toLowerCase());
         capabilities.setVersion(versionBrowser);
